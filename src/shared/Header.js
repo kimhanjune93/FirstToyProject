@@ -7,7 +7,7 @@ const Header = (props) => {
     return (
         <HeaderWrap>
             <Container>
-                <Text size="30px">무신사</Text>
+                <Text size="30px" margin="auto">무신사</Text>
             </Container>
         </HeaderWrap>
     );

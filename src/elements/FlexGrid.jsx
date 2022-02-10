@@ -15,6 +15,7 @@ const FlexGrid = (props) => {
     _onClick,
     children,
     flexDirection,
+    pointer,
   } = props;
 
   const styles = {
@@ -27,7 +28,8 @@ const FlexGrid = (props) => {
     border: border,
     bg: bg,
     alignItems: alignItems,
-    flexDirection:flexDirection,
+    flexDirection: flexDirection,
+    pointer:pointer,
   };
 
   return (
@@ -40,28 +42,30 @@ const FlexGrid = (props) => {
 FlexGrid.defaultProps = {
   is_flex: false,
   justify: "flex-start",
-  flexDirection:"row",
+  flexDirection: "row",
   width: "auto",
   margin: 0,
   padding: 0,
   border: 0,
   bg: "transparent",
-  alignItems: "center",
+  alignItems: null,
   _onClick: () => {},
+  pointer: null,
 };
 
 const FlexGridWrap = styled.div`
-  display: ${(props) => (props.is_flex ? `flex; flex-direction: ${props.flexDirection}` : "")};
+  display: ${(props) =>
+    props.is_flex ? `flex; flex-direction: ${props.flexDirection}` : ""};
   justify-content: ${(props) => (props.justify ? props.justify : "flex-start")};
-  align-items: ${(props) => (props.alignItems ? props.alignItems : "center")};
+  align-items: ${(props) => (props.alignItems ? props.alignItems : null)};
   width: ${(props) => props.width};
-  margin: ${(props) => (props.margin ? props.margin : "auto")};
+  margin: ${(props) => props.margin};
   padding: ${(props) => (props.padding ? props.padding : "0")};
   flex-wrap: wrap;
   border: ${(props) => (props.border ? props.border : "")};
   background-color: ${(props) => (props.bg ? props.bg : "transparent")};
   &:hover {
-    cursor: pointer;
+    ${(props) => (props.pointer ? "cursor:pointer;" : null)};
   }
 `;
 
